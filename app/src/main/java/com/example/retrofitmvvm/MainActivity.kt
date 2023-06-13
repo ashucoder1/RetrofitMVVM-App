@@ -20,11 +20,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        textView=findViewById(R.id.textview)
+        val repository =(application as MyApplication).memesRepository
 
-        val apiinterface=ApiUtilities.getInstance().create(ApiInterface::class.java)
-        val memesRepository=MemesRepository(apiinterface)
-        memesViewModel=ViewModelProvider(this,MemesViewModelFactory(memesRepository)).get(MemesViewModel::class.java)
+        memesViewModel=ViewModelProvider(this,MemesViewModelFactory(repository)).get(MemesViewModel::class.java)
 
         memesViewModel.memes.observe(this,{
             //Log.d("Ashu", "onCreate: ${it.toString()}")
