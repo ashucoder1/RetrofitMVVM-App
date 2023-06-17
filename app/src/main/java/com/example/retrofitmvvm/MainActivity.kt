@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.retrofitmvvm.api.ApiInterface
 import com.example.retrofitmvvm.api.ApiUtilities
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         memesViewModel.memes.observe(this,{
             //Log.d("Ashu", "onCreate: ${it.toString()}")
+
+            Toast.makeText(this, "size:${it.data.memes.size}", Toast.LENGTH_LONG).show()
 
             it.data.memes.iterator().forEach {meme->    //it replaced with meme
                 Log.d("Ashu", "names:${meme.name}\n image:${meme.url} ")

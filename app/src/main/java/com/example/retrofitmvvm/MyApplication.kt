@@ -16,7 +16,7 @@ class MyApplication:Application() {
 
         val database =MemeDatabase.getDatabase(applicationContext)
 
-        memesRepository=MemesRepository(apiinterface,database)
+        memesRepository=MemesRepository(apiinterface,database, applicationContext)
     }
 
 }
